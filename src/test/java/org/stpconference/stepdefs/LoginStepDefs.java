@@ -1,8 +1,12 @@
 package org.stpconference.stepdefs;
 
-import cucumber.api.java.en.And;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.stpconference.pageobjects.LoginPage;
 import org.testng.Assert;
 
@@ -11,16 +15,32 @@ import org.testng.Assert;
  */
 public class LoginStepDefs {
 
-    LoginPage loginPage = new LoginPage(LoginTestCucumber.driver);
-    protected String USER = "tomsmith";
-    protected String PASSWORD = "SuperSecretPassword!";
+    private WebDriver driver;
+    private LoginPage loginPage;
+    private String USER = "tomsmith";
+    private String PASSWORD = "SuperSecretPassword!";
+
+
+    @Before
+    public void setup()
+    {
+        driver = new FirefoxDriver();
+        loginPage = new LoginPage(driver);
+    }
+
+     @After
+     public void teardown()
+     {
+         driver.close();
+     }
+
 
     @Given("^I am on the Login screen$")
     public void iAmOnTheLoginScreen()  {
         System.out.println("Hello1");
     }
 
-    @And("^I submit the username and password and press login$")
+    @When("^I submit the username and password and press login$")
     public void iSubmitTheUsernameAndPasswordAndPressLogin()  {
         loginPage.with(USER, PASSWORD);
         System.out.println("Hello2");
