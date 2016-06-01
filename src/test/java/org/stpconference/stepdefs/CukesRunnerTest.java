@@ -5,7 +5,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.junit.runner.RunWith;
 
 /**
- * Created by Paul on 4/7/16.
+ * Boilerplate code to run Cucumber tests
  */
 @RunWith(Cucumber.class)
 public class CukesRunnerTest extends AbstractTestNGCucumberTests {
