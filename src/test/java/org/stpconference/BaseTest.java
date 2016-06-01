@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 /**
  * Created by Paul on 4/4/16.
  */
-public class BaseTest {
+public abstract class BaseTest {
     protected WebDriver driver;
 
     String DRIVER_LOC = "/Users/Paul/IdeaProjects/chromedriver";
