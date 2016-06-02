@@ -37,18 +37,19 @@ public class LoginStepDefs {
 
     @Given("^I am on the Login screen$")
     public void iAmOnTheLoginScreen()  {
-        System.out.println("Hello1");
+        System.out.println("I am on the Login screen");
     }
 
     @When("^I submit the username and password and press login$")
     public void iSubmitTheUsernameAndPasswordAndPressLogin()  {
         loginPage.with(USER, PASSWORD);
-        System.out.println("Hello2");
+        System.out.println("I submit the username and password and press " +
+                "login");
     }
 
     @Then("^I should go to the HomePage$")
     public void iShouldGoToTheHomePage()  {
         Assert.assertTrue(loginPage.loginSuccess(), "Did not Login successfully");
-        System.out.println("Hello3");
+        System.out.println("I should be at the Home Page");
     }
 }
