@@ -1,12 +1,9 @@
 package org.stpconference.stepdefs;
 
 import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.stpconference.pageobjects.LoginPage;
 import org.testng.Assert;
 
@@ -15,24 +12,21 @@ import org.testng.Assert;
  */
 public class LoginStepDefs {
 
-    private WebDriver driver;
     private LoginPage loginPage;
     private String USER = "tomsmith";
-    private String PASSWORD = "SuperSecretPassword!";
+    private String PASSWORD ="SuperSecretPassword!";
 
 
-    @Before
-    public void setup()
+    public LoginStepDefs(LoginPage page)
     {
-        driver = new FirefoxDriver();
-        loginPage = new LoginPage(driver);
+        this.loginPage = page;
     }
 
-     @After
-     public void teardown()
-     {
-         driver.close();
-     }
+    @After
+    public void teardown()
+    {
+        this.loginPage.getDriver().close();
+    }
 
 
     @Given("^I am on the Login screen$")

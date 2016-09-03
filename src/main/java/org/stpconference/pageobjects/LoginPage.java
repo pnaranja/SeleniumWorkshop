@@ -2,6 +2,7 @@ package org.stpconference.pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 /**
@@ -22,6 +23,17 @@ public class LoginPage extends BasePage {
         driver.get(LOGINURL);
         Assert.assertTrue(driver.findElement(loginform).isDisplayed(),
                 "LoginPage form did not display");
+    }
+
+    /**
+     * For the sake of the DI
+     */
+    public LoginPage()
+    {
+        String DRIVER_LOC = "/Users/Paul/IdeaProjects/chromedriver";
+        System.setProperty("webdriver.chrome.driver", DRIVER_LOC);
+        driver = new ChromeDriver();
+        driver.get(LOGINURL);
     }
 
     public void with(String username, String password){

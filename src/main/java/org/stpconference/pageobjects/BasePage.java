@@ -14,6 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
     WebDriver driver;
 
+    // For the sake of the DI
+    BasePage(){}
+
     BasePage(WebDriver driver){
         this.driver = driver;
         driver.manage().window().maximize();
@@ -43,5 +46,10 @@ public class BasePage {
         timeout = timeout != null ? timeout : 5;
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(condition);
+    }
+
+    public WebDriver getDriver()
+    {
+        return driver;
     }
 }
